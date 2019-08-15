@@ -4,14 +4,20 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { MatListModule, MatButtonModule, MatToolbarModule, MatFormFieldModule, MatInputModule, MatIconModule, MatOptionModule, MatSelectModule, } from '@angular/material';
+import { MatListModule, MatButtonModule, MatToolbarModule, MatFormFieldModule, MatInputModule, MatIconModule, MatOptionModule, MatSelectModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
 
 import { AppComponent } from './app.component';
+import { CourseSelectComponent } from './selectionPage/course-select.component';
+import { AppRoutingModule } from './app-routing.module';
+import { CourseComponent } from './playPage/course/course.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CourseSelectComponent,
+    CourseComponent,
   ],
   imports: [
     HttpClientModule,
@@ -26,7 +32,9 @@ import { AppComponent } from './app.component';
     MatInputModule,
     MatIconModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

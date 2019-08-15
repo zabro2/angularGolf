@@ -1,0 +1,11 @@
+<div class='totalHolder'>
+  <div class='titleText'>Select your course</div>
+  <div class='cardHolder'>
+    <mat-card class="example-card" *ngFor="let course of courses" (click)='onCourseSelect(course.id)' routerLink="/course/{{course.id}}">
+      <mat-card-header>
+        <mat-card-title>{{course.name}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image [src]='course.image' alt="Golf Course Picture">
+    </mat-card>
+  </div>
+</div>
