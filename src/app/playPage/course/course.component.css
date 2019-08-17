@@ -1,3 +1,16 @@
 .backNav {
   padding: 10px;
 }
+
+.diffHolder {
+  display: flex;
+  justify-content: center;
+}
+
+.diffNav {
+  padding: 10px;
+}
+
+.diffBtn {
+  margin: 5px;
+}

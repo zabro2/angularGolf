@@ -1,5 +1,11 @@
 <nav class='backNav'>
-  <button mat-raised-button routerLink=''>Back</button>
+  <button mat-button routerLink=''>Back</button>
 </nav>
-<p>{{id}}</p>
-<p>{{ courseData.holes | json }}</p>
+<div class='diffHolder'>
+  <nav class='diffNav'>
+    <button class='diffBtn' mat-raised-button
+      *ngFor="let difficulty of courseData.holes[0].teeBoxes" (click)='onDifficultySelect(difficulty)' >{{difficulty.teeType}}</button>
+  </nav>
+</div>
+<p *ngIf='selectedDiffIdx'>{{holeDifficulty}}</p>
+<p *ngFor='let hole of courseData.holes'>{{hole.teeBoxes[selectedDiffIdx].yards}}</p>

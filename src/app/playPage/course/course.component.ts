@@ -12,10 +12,12 @@ export class CourseComponent implements OnInit {
 
   id: number;
   courseData: any;
+  holeDifficulty: any;
+  selectedDiffIdx: number;
 
   constructor(private route: ActivatedRoute, private golfDataService: GolfDataService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.id = +this.route.snapshot.paramMap.get('id');
     console.log(this.id);
     this.golfDataService
@@ -24,6 +26,13 @@ export class CourseComponent implements OnInit {
         this.courseData = data.data;
         console.log(this.courseData);
       });
+  }
+
+  onDifficultySelect(difficulty): void {
+    this.holeDifficulty = difficulty.teeType;
+    this.selectedDiffIdx = this.courseData.holes[0].teeBoxes.indexOf(difficulty);
+    console.log(this.holeDifficulty);
+    console.log(this.selectedDiffIdx);
   }
 
 }
