@@ -29,6 +29,7 @@ export class CourseSelectComponent implements OnInit {
       .subscribe(data => {
         this.selectedCourse = data.data;
       });
+      console.log(this.courses)
   }
 
 }

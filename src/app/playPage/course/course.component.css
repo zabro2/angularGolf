@@ -14,3 +14,16 @@
 .diffBtn {
   margin: 5px;
 }
+
+.golfCard {
+  margin: 50px;
+}
+
+.golfCardHeader {
+  display: flex;
+  justify-content: center;
+}
+
+.golfCardTitle {
+  margin: 0 10% 0 10%;
+}

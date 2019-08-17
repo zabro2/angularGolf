@@ -14,6 +14,8 @@ export class CourseComponent implements OnInit {
   courseData: any;
   holeDifficulty: any;
   selectedDiffIdx: number;
+  coursePar = 0;
+  courseHandiCap = 0;
 
   constructor(private route: ActivatedRoute, private golfDataService: GolfDataService) { }
 
@@ -31,8 +33,17 @@ export class CourseComponent implements OnInit {
   onDifficultySelect(difficulty): void {
     this.holeDifficulty = difficulty.teeType;
     this.selectedDiffIdx = this.courseData.holes[0].teeBoxes.indexOf(difficulty);
+    this.coursePar = 0;
+    this.courseHandiCap = 0;
+    this.courseData.holes.forEach(hole => {
+      this.coursePar += hole.teeBoxes[this.selectedDiffIdx].par;
+      this.courseHandiCap += hole.teeBoxes[this.selectedDiffIdx].hcp;
+    });
     console.log(this.holeDifficulty);
     console.log(this.selectedDiffIdx);
+    console.log(this.coursePar);
+    console.log(this.courseHandiCap);
+
   }
 
 }
