@@ -15,15 +15,30 @@
   margin: 5px;
 }
 
-.golfCard {
-  margin: 50px;
+.newPlayerHolder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addPlayerBtn {
+  height: 36px;
+  margin: 10px;
+}
+
+mat-card {
+  margin: 25px 50px;
 }
 
 .golfCardHeader {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  position: relative;
+  margin: 0 20px;
 }
 
 .golfCardTitle {
-  margin: 0 10% 0 10%;
+  margin: 0 10px;
+  min-width: 224.8px;
+  text-align: center;
 }

@@ -3,13 +3,19 @@
 </nav>
 <div class='diffHolder'>
   <nav class='diffNav'>
-    <button class='diffBtn' mat-raised-button *ngFor="let difficulty of courseData.holes[0].teeBoxes"
+    <button class='diffBtn' mat-raised-button *ngFor="let difficulty of courseData?.holes[0].teeBoxes"
       (click)='onDifficultySelect(difficulty)'>{{difficulty.teeType}}</button>
   </nav>
 </div>
 <div *ngIf='selectedDiffIdx != null'>
-  <mat-card class="golfCard">
-    <mat-card-header class='golfCardHeader'>
+  <div class='newPlayerHolder'>
+    <mat-form-field>
+      <input matInput type='text' placeholder="Player Name" [formControl]="playerControl">
+    </mat-form-field>
+    <button class='addPlayerBtn' mat-raised-button color='primary' (click)='addPlayer(this.playerControl)'>Add</button>
+  </div>
+  <mat-card class="headerCard">
+    <div class='golfCardHeader'>
       <div class='golfCardTitle'>
         <mat-card-title>{{courseData.name}}</mat-card-title>
         <mat-card-subtitle>{{courseData.addr1}}, {{courseData.city}}</mat-card-subtitle>
@@ -19,11 +25,11 @@
         <mat-card-subtitle>HandiCap {{courseHandiCap}}</mat-card-subtitle>
       </div>
       <div class='golfCardTitle'>
-          <mat-card-title>{{holeDifficulty}}</mat-card-title>
-        </div>
-    </mat-card-header>
-    <mat-card-content>
-        <!-- <p *ngFor='let hole of courseData.holes'>{{hole.teeBoxes[selectedDiffIdx].yards}}</p> -->
-    </mat-card-content>
+        <mat-card-title>{{holeDifficulty}}</mat-card-title>
+      </div>
+    </div>
+  </mat-card>
+  <mat-card>
+    <p *ngFor='let player of this.playerList'>{{player}}</p>
   </mat-card>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { GolfDataService } from 'src/app/api/golf-data.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-course',
@@ -17,7 +18,11 @@ export class CourseComponent implements OnInit {
   coursePar = 0;
   courseHandiCap = 0;
 
+  playerList = [];
+;
   constructor(private route: ActivatedRoute, private golfDataService: GolfDataService) { }
+
+    playerControl = new FormControl('');
 
   ngOnInit(): void {
     this.id = +this.route.snapshot.paramMap.get('id');
@@ -28,6 +33,12 @@ export class CourseComponent implements OnInit {
         this.courseData = data.data;
         console.log(this.courseData);
       });
+  }
+
+  addPlayer(player) {
+    let newPlayer = player.value
+    this.playerList.push(newPlayer);
+    this.playerControl.reset();
   }
 
   onDifficultySelect(difficulty): void {
@@ -43,7 +54,6 @@ export class CourseComponent implements OnInit {
     console.log(this.selectedDiffIdx);
     console.log(this.coursePar);
     console.log(this.courseHandiCap);
-
   }
 
 }

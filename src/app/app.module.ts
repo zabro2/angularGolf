@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatListModule, MatButtonModule, MatToolbarModule, MatFormFieldModule, MatInputModule, MatIconModule, MatOptionModule, MatSelectModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 
@@ -23,6 +23,7 @@ import { CourseComponent } from './playPage/course/course.component';
     HttpClientModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     MatListModule,
