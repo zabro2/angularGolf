@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
-import { GolfDataService } from 'src/app/api/golf-data.service';
 import { FormControl } from '@angular/forms';
+
+import { GolfDataService } from 'src/app/services/golf-data.service';
+import { PlayerService } from 'src/app/services/player.service';
+import { Player } from 'src/app/interfaces/player';
 
 @Component({
   selector: 'app-course',
@@ -17,16 +19,15 @@ export class CourseComponent implements OnInit {
   selectedDiffIdx: number;
   coursePar = 0;
   courseHandiCap = 0;
+  playerControl = new FormControl('');
 
-  playerList = [];
-;
-  constructor(private route: ActivatedRoute, private golfDataService: GolfDataService) { }
-
-    playerControl = new FormControl('');
+  constructor(
+    private route: ActivatedRoute,
+    private golfDataService: GolfDataService,
+    public playerService: PlayerService) { }
 
   ngOnInit(): void {
     this.id = +this.route.snapshot.paramMap.get('id');
-    console.log(this.id);
     this.golfDataService
       .getGolfData(this.id)
       .subscribe(data => {
@@ -36,8 +37,10 @@ export class CourseComponent implements OnInit {
   }
 
   addPlayer(player) {
-    let newPlayer = player.value
-    this.playerList.push(newPlayer);
+    let playerName = player.value
+    let newPlayer: Player;
+    newPlayer = {name: playerName};
+    this.playerService.addPlayer(newPlayer);
     this.playerControl.reset();
   }
 

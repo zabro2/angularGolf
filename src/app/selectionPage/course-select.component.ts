@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { GolfCourse } from '../interfaces/golf-course';
-import { GolfCourseDataService } from '../api/golf-course-data.service';
-import { GolfDataService } from '../api/golf-data.service';
+import { GolfCourseDataService } from '../services/golf-course-data.service';
+import { GolfDataService } from '../services/golf-data.service';
 
 @Component({
   selector: 'app-course-select',
@@ -29,7 +29,5 @@ export class CourseSelectComponent implements OnInit {
       .subscribe(data => {
         this.selectedCourse = data.data;
       });
-      console.log(this.courses)
   }
-
 }

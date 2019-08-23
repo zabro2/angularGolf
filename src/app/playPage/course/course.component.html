@@ -29,7 +29,54 @@
       </div>
     </div>
   </mat-card>
+  <mat-card class='holeInfoCard'>
+    <div class='holeInfoTopHolder'>
+      <div class='forCssFix'>
+        <div class='left'></div>
+        <div class='holeNumber'>1</div>
+        <div class='holeNumber'>2</div>
+        <div class='holeNumber'>3</div>
+        <div class='holeNumber'>4</div>
+        <div class='holeNumber'>5</div>
+        <div class='holeNumber'>6</div>
+        <div class='holeNumber'>7</div>
+        <div class='holeNumber'>8</div>
+        <div class='holeNumber'>9</div>
+        <div class='holeNumber'>10</div>
+        <div class='holeNumber'>11</div>
+        <div class='holeNumber'>12</div>
+        <div class='holeNumber'>13</div>
+        <div class='holeNumber'>14</div>
+        <div class='holeNumber'>15</div>
+        <div class='holeNumber'>16</div>
+        <div class='holeNumber'>17</div>
+        <div class='holeNumber'>18</div>
+      </div>
+      <div class='right'></div>
+    </div>
+    <div class='holeInfoMainHolder'>
+      <div class='holeInfoHolder'>
+        <div class='holeInfoRow'>
+          <div class='holeInfo holeInfoTitle'>Yards</div>
+          <div class='holeInfo' *ngFor='let hole of courseData?.holes'>{{hole.teeBoxes[selectedDiffIdx].yards}}</div>
+        </div>
+        <div class='holeInfoRow'>
+          <div class='holeInfo holeInfoTitle'>Hcp</div>
+          <div class='holeInfo' *ngFor='let hole of courseData?.holes'>{{hole.teeBoxes[selectedDiffIdx].hcp}}</div>
+        </div>
+        <div class='holeInfoRow'>
+          <div class='holeInfo holeInfoTitle'>Par</div>
+          <div class='holeInfo' *ngFor='let hole of courseData?.holes'>{{hole.teeBoxes[selectedDiffIdx].par}}</div>
+        </div>
+      </div>
+      <div class='totalsHolder'>
+        <p>in</p>
+        <p>out</p>
+        <p>total</p>
+      </div>
+    </div>
+  </mat-card>
   <mat-card>
-    <p *ngFor='let player of this.playerList'>{{player}}</p>
+    <p *ngFor='let player of this.playerService.players'>{{player.name}}</p>
   </mat-card>
 </div>

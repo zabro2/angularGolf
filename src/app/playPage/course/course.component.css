@@ -42,3 +42,58 @@ mat-card {
   min-width: 224.8px;
   text-align: center;
 }
+
+.holeInfoTopHolder {
+  display: flex;
+  justify-content: space-between;
+}
+
+.forCssFix {
+  display: flex;
+  justify-content: space-between;
+  min-width: 84%;
+}
+
+.left {
+  min-width: 100px;
+}
+
+.holeNumber {
+  min-width: 27px;
+  text-align: center;
+}
+
+.right {
+  min-width: 14%;
+}
+
+.holeInfoMainHolder {
+  display: flex;
+  justify-content: space-between;
+}
+
+.holeInfoHolder {
+  min-width: 84%;
+}
+
+.holeInfoRow {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.holeInfo {
+  min-width: 27px;
+  text-align: center;
+}
+
+.holeInfoTitle {
+  min-width: 100px;
+  text-align: left;
+}
+
+.totalsHolder {
+  min-width: 14%;
+  display: flex;
+  justify-content: space-between;
+}
