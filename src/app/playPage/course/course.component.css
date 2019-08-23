@@ -59,6 +59,9 @@ mat-card {
 }
 
 .holeNumber {
+  color: #3F51B5;
+  font-weight: 900;
+  font-size: 1.2em;
   min-width: 27px;
   text-align: center;
 }
@@ -88,6 +91,7 @@ mat-card {
 }
 
 .holeInfoTitle {
+  font-size: 1.2em;
   min-width: 100px;
   text-align: left;
 }

@@ -17,8 +17,8 @@ export class CourseComponent implements OnInit {
   courseData: any;
   holeDifficulty: any;
   selectedDiffIdx: number;
-  coursePar = 0;
-  courseHandiCap = 0;
+  coursePar: number = 0;
+  courseHandiCap: number = 0;
   playerControl = new FormControl('');
 
   constructor(
@@ -38,8 +38,8 @@ export class CourseComponent implements OnInit {
 
   addPlayer(player) {
     let playerName = player.value
-    let newPlayer: Player;
-    newPlayer = {name: playerName};
+    let newPlayer;
+    newPlayer = { name: playerName };
     this.playerService.addPlayer(newPlayer);
     this.playerControl.reset();
   }
@@ -53,10 +53,5 @@ export class CourseComponent implements OnInit {
       this.coursePar += hole.teeBoxes[this.selectedDiffIdx].par;
       this.courseHandiCap += hole.teeBoxes[this.selectedDiffIdx].hcp;
     });
-    console.log(this.holeDifficulty);
-    console.log(this.selectedDiffIdx);
-    console.log(this.coursePar);
-    console.log(this.courseHandiCap);
   }
-
 }
