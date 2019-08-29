@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, DocumentChangeAction, } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Player } from '../interfaces/player';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Game } from '../interfaces/game';
 
 @Injectable({
   providedIn: 'root'
@@ -10,34 +9,15 @@ import { map } from 'rxjs/operators';
 export class PlayerService {
 
   players: Player[] = [];
-  dbRef = this.db.collection<Player>('players');
+  dbRef = this.db.collection('games');
 
   constructor(private db: AngularFirestore) { }
 
-  savePlayer(player) {
-    this.dbRef.add(player);
-  }
-
-  updatePlayer(player) {
-    this.dbRef.doc(player).update(player);
-  }
-
-  getPlayersObservable(): Observable<Player[]> {
-    return this.dbRef.snapshotChanges().pipe(
-      map(
-        (items: DocumentChangeAction<Player>[]): Player[] => {
-          return items.map(
-            (item: DocumentChangeAction<Player>): Player => {
-              return {
-                id: item.payload.doc.id,
-                name: item.payload.doc.data().name,
-                scores: item.payload.doc.data().scores
-              };
-            }
-          );
-        }
-      )
-    );
+  saveGame(courseName, dif) {
+    let game: Game = {course: courseName};
+    game.difficulty = dif;
+    game.players = this.players;
+    this.dbRef.add(game);
   }
 
   addPlayer(player) {

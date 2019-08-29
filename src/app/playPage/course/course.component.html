@@ -10,7 +10,7 @@
 <div *ngIf='selectedDiffIdx != null'>
   <div class='newPlayerHolder'>
     <mat-form-field>
-      <input matInput type='text' placeholder="Player Name" [formControl]="playerControl">
+      <input matInput type='text' placeholder="Player Name" [formControl]="playerControl" (keydown)='checkKey($event)'>
     </mat-form-field>
     <button class='addPlayerBtn' mat-raised-button color='primary' (click)='addPlayer()'>Add</button>
   </div>
@@ -72,82 +72,103 @@
         </div>
       </div>
       <div class='totalsHolder'>
-        <p>Out</p>
-        <p>In</p>
-        <p>Total</p>
+        <div class='totalScore'>Out</div>
+        <div class='totalScore'>In</div>
+        <div class='totalScore'>Total</div>
       </div>
     </div>
   </mat-card>
-  <mat-card>
+  <mat-card *ngIf='playerCount > 0'>
     <div class='playerHolder' *ngFor='let player of playerService.players; let playerIdx = index'>
       <div class='holeScoreHolder forCssFix'>
         <div class='playerName'>{{player.name}}</div>
         <div>
-          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[0]' />
+          <input class='holeScore' type='number' (change)='updateScores()'
+            [(ngModel)]='playerService.players[playerIdx].scores[0]' />
         </div>
         <div>
-          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[1]' />
+          <input class='holeScore' type='number' (change)='updateScores()'
+            [(ngModel)]='playerService.players[playerIdx].scores[1]' />
         </div>
         <div>
-          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[2]' />
+          <input class='holeScore' type='number' (change)='updateScores()'
+            [(ngModel)]='playerService.players[playerIdx].scores[2]' />
         </div>
         <div>
-          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[3]' />
+          <input class='holeScore' type='number' (change)='updateScores()'
+            [(ngModel)]='playerService.players[playerIdx].scores[3]' />
         </div>
         <div>
-          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[4]' />
+          <input class='holeScore' type='number' (change)='updateScores()'
+            [(ngModel)]='playerService.players[playerIdx].scores[4]' />
         </div>
         <div>
-          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[5]' />
+          <input class='holeScore' type='number' (change)='updateScores()'
+            [(ngModel)]='playerService.players[playerIdx].scores[5]' />
         </div>
         <div>
-          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[6]' />
+          <input class='holeScore' type='number' (change)='updateScores()'
+            [(ngModel)]='playerService.players[playerIdx].scores[6]' />
         </div>
         <div>
-          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[7]' />
+          <input class='holeScore' type='number' (change)='updateScores()'
+            [(ngModel)]='playerService.players[playerIdx].scores[7]' />
         </div>
         <div>
-          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[8]' />
+          <input class='holeScore' type='number' (change)='updateScores()'
+            [(ngModel)]='playerService.players[playerIdx].scores[8]' />
         </div>
         <div>
-          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[9]' />
+          <input class='holeScore' type='number' (change)='updateScores()'
+            [(ngModel)]='playerService.players[playerIdx].scores[9]' />
         </div>
         <div>
-          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[10]' />
+          <input class='holeScore' type='number' (change)='updateScores()'
+            [(ngModel)]='playerService.players[playerIdx].scores[10]' />
         </div>
         <div>
-          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[11]' />
+          <input class='holeScore' type='number' (change)='updateScores()'
+            [(ngModel)]='playerService.players[playerIdx].scores[11]' />
         </div>
         <div>
-          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[12]' />
+          <input class='holeScore' type='number' (change)='updateScores()'
+            [(ngModel)]='playerService.players[playerIdx].scores[12]' />
         </div>
         <div>
-          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[13]' />
+          <input class='holeScore' type='number' (change)='updateScores()'
+            [(ngModel)]='playerService.players[playerIdx].scores[13]' />
         </div>
         <div>
-          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[14]' />
+          <input class='holeScore' type='number' (change)='updateScores()'
+            [(ngModel)]='playerService.players[playerIdx].scores[14]' />
         </div>
         <div>
-          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[15]' />
+          <input class='holeScore' type='number' (change)='updateScores()'
+            [(ngModel)]='playerService.players[playerIdx].scores[15]' />
         </div>
         <div>
-          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[16]' />
+          <input class='holeScore' type='number' (change)='updateScores()'
+            [(ngModel)]='playerService.players[playerIdx].scores[16]' />
         </div>
         <div>
-          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[17]' />
+          <input class='holeScore' type='number' (change)='updateScores()'
+            [(ngModel)]='playerService.players[playerIdx].scores[17]' />
         </div>
       </div>
       <div class='playerRight right'>
         <div class='totalScores'>
-          <div class='totalScore totalOut'></div>
-          <div class='totalScore totalIn'></div>
-          <div class='totalScore totalTotal'></div>
+          <div class='totalScore'>{{totalScores[playerIdx].out}}</div>
+          <div class='totalScore'>{{totalScores[playerIdx].in}}</div>
+          <div class='totalScore totalTotal'>{{totalScores[playerIdx].total}}</div>
         </div>
       </div>
     </div>
   </mat-card>
+  <mat-card *ngIf='gameOver'>
+    <mat-card-title *ngFor='let message of endMessages'>{{message}}</mat-card-title>
+  </mat-card>
   <nav *ngIf='playerService.players.length > 0' class='bottomNav'>
-    <button class='clearDbBtn' mat-raised-button color='warn' (click)='clearDb()'>Clear Database</button>
-    <button class='finishBtn' mat-raised-button color='primary' (click)='finishGame()'>Finish</button>
+    <button *ngIf='!gameOver' class='finishBtn' mat-raised-button color='primary' (click)='finishGame()'>Finish</button>
+    <button *ngIf='gameOver' class='finishBtn' mat-raised-button color='primary' (click)='newGame()'>New Game</button>
   </nav>
 </div>
