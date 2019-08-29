@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore, DocumentChangeAction, } from '@angular/fire/firestore';
 import { Player } from '../interfaces/player';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -7,43 +10,39 @@ import { Player } from '../interfaces/player';
 export class PlayerService {
 
   players: Player[] = [];
+  dbRef = this.db.collection<Player>('players');
 
-  constructor() { }
+  constructor(private db: AngularFirestore) { }
 
-  getAllPlayers() {
-    return this.players;
+  savePlayer(player) {
+    this.dbRef.add(player);
+  }
+
+  updatePlayer(player) {
+    this.dbRef.doc(player).update(player);
+  }
+
+  getPlayersObservable(): Observable<Player[]> {
+    return this.dbRef.snapshotChanges().pipe(
+      map(
+        (items: DocumentChangeAction<Player>[]): Player[] => {
+          return items.map(
+            (item: DocumentChangeAction<Player>): Player => {
+              return {
+                id: item.payload.doc.id,
+                name: item.payload.doc.data().name,
+                scores: item.payload.doc.data().scores
+              };
+            }
+          );
+        }
+      )
+    );
   }
 
   addPlayer(player) {
-    let playerObj = player;
-    playerObj.scores = [
-      { hole1: 0 },
-      { hole2: 0 },
-      { hole3: 0 },
-      { hole4: 0 },
-      { hole5: 0 },
-      { hole6: 0 },
-      { hole7: 0 },
-      { hole8: 0 },
-      { hole9: 0 },
-      { hole10: 0 },
-      { hole11: 0 },
-      { hole12: 0 },
-      { hole13: 0 },
-      { hole14: 0 },
-      { hole15: 0 },
-      { hole16: 0 },
-      { hole17: 0 },
-      { hole18: 0 }
-    ];
-    playerObj.totals = [
-      { out: 0 },
-      { in: 0 },
-      { total: 0 }
-    ];
-    this.players.push(playerObj);
+    player.scores = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    this.players.push(player);
     console.log(this.players);
   }
 }
-
-// console.log(Object.values(playerObj.scores[0])[0]) accessing the score//

@@ -12,7 +12,7 @@
     <mat-form-field>
       <input matInput type='text' placeholder="Player Name" [formControl]="playerControl">
     </mat-form-field>
-    <button class='addPlayerBtn' mat-raised-button color='primary' (click)='addPlayer(this.playerControl)'>Add</button>
+    <button class='addPlayerBtn' mat-raised-button color='primary' (click)='addPlayer()'>Add</button>
   </div>
   <mat-card class="headerCard">
     <div class='golfCardHeader'>
@@ -52,7 +52,9 @@
         <div class='holeNumber'>17</div>
         <div class='holeNumber'>18</div>
       </div>
-      <div class='right'></div>
+      <div class='right'>
+        <div class='rightTitle'>Total Scores</div>
+      </div>
     </div>
     <div class='holeInfoMainHolder'>
       <div class='holeInfoHolder'>
@@ -70,13 +72,82 @@
         </div>
       </div>
       <div class='totalsHolder'>
-        <p>In</p>
         <p>Out</p>
+        <p>In</p>
         <p>Total</p>
       </div>
     </div>
   </mat-card>
   <mat-card>
-    <p *ngFor='let player of this.playerService.players'>{{player.name}}</p>
+    <div class='playerHolder' *ngFor='let player of playerService.players; let playerIdx = index'>
+      <div class='holeScoreHolder forCssFix'>
+        <div class='playerName'>{{player.name}}</div>
+        <div>
+          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[0]' />
+        </div>
+        <div>
+          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[1]' />
+        </div>
+        <div>
+          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[2]' />
+        </div>
+        <div>
+          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[3]' />
+        </div>
+        <div>
+          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[4]' />
+        </div>
+        <div>
+          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[5]' />
+        </div>
+        <div>
+          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[6]' />
+        </div>
+        <div>
+          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[7]' />
+        </div>
+        <div>
+          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[8]' />
+        </div>
+        <div>
+          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[9]' />
+        </div>
+        <div>
+          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[10]' />
+        </div>
+        <div>
+          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[11]' />
+        </div>
+        <div>
+          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[12]' />
+        </div>
+        <div>
+          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[13]' />
+        </div>
+        <div>
+          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[14]' />
+        </div>
+        <div>
+          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[15]' />
+        </div>
+        <div>
+          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[16]' />
+        </div>
+        <div>
+          <input class='holeScore' type='number' [(ngModel)]='playerService.players[playerIdx].scores[17]' />
+        </div>
+      </div>
+      <div class='playerRight right'>
+        <div class='totalScores'>
+          <div class='totalScore totalOut'></div>
+          <div class='totalScore totalIn'></div>
+          <div class='totalScore totalTotal'></div>
+        </div>
+      </div>
+    </div>
   </mat-card>
+  <nav *ngIf='playerService.players.length > 0' class='bottomNav'>
+    <button class='clearDbBtn' mat-raised-button color='warn' (click)='clearDb()'>Clear Database</button>
+    <button class='finishBtn' mat-raised-button color='primary' (click)='finishGame()'>Finish</button>
+  </nav>
 </div>
