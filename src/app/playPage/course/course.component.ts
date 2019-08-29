@@ -46,11 +46,24 @@ export class CourseComponent implements OnInit {
 
   addPlayer() {
     let playerName = this.playerControl.value
-    let newPlayer = { name: playerName };
-    this.playerService.addPlayer(newPlayer);
-    this.playerControl.reset();
-    this.totalScores.push({ out: 0, in: 0, total: 0 });
-    this.playerCount++;
+    let canAdd = true;
+    if (this.playerCount == 4) {
+      alert('Max player limit reached');
+      return;
+    }
+    this.playerService.players.forEach(player => {
+      if (playerName == player.name) {
+        alert('that name is already chosen');
+        canAdd = false;
+      }
+    });
+    if (canAdd) {
+      let newPlayer = { name: playerName };
+      this.playerService.addPlayer(newPlayer);
+      this.playerControl.reset();
+      this.totalScores.push({ out: 0, in: 0, total: 0 });
+      this.playerCount++;
+    }
   }
 
   onDifficultySelect(difficulty): void {

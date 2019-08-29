@@ -10,7 +10,7 @@
 <div *ngIf='selectedDiffIdx != null'>
   <div class='newPlayerHolder'>
     <mat-form-field>
-      <input matInput type='text' placeholder="Player Name" [formControl]="playerControl" (keydown)='checkKey($event)'>
+      <input matInput type='text' placeholder="Player Name" [formControl]="playerControl" (keydown)='checkKey($event)'/>
     </mat-form-field>
     <button class='addPlayerBtn' mat-raised-button color='primary' (click)='addPlayer()'>Add</button>
   </div>
