@@ -15,6 +15,12 @@
   margin: 5px;
 }
 
+.titleText {
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 900;
+}
+
 .newPlayerHolder {
   display: flex;
   justify-content: center;

@@ -1,6 +1,10 @@
 <nav class='backNav'>
   <button mat-button color='warn' routerLink=''>Back</button>
 </nav>
+<div class='titleText' *ngIf='!holeDifficulty'>
+  <P>Select your difficulty level</P>
+  <p>You can change this at any time</p>
+</div>
 <div class='diffHolder'>
   <nav class='diffNav'>
     <button class='diffBtn' mat-raised-button *ngFor="let difficulty of courseData?.holes[0].teeBoxes"
@@ -10,7 +14,8 @@
 <div *ngIf='selectedDiffIdx != null'>
   <div class='newPlayerHolder'>
     <mat-form-field>
-      <input matInput type='text' placeholder="Player Name" [formControl]="playerControl" (keydown)='checkKey($event)'/>
+      <input matInput type='text' placeholder="Player Name" [formControl]="playerControl"
+        (keydown)='checkKey($event)' />
     </mat-form-field>
     <button class='addPlayerBtn' mat-raised-button color='primary' (click)='addPlayer()'>Add</button>
   </div>

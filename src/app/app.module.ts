@@ -14,7 +14,6 @@ import { CourseComponent } from './playPage/course/course.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
-import { PlayerNamePipe } from './pipe/player-name.pipe';
 
 
 @NgModule({
@@ -22,7 +21,6 @@ import { PlayerNamePipe } from './pipe/player-name.pipe';
     AppComponent,
     CourseSelectComponent,
     CourseComponent,
-    PlayerNamePipe,
   ],
   imports: [
     HttpClientModule,
